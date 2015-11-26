@@ -150,8 +150,6 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '5fc388d8613577ec2b1ce2d74b19c424'
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
-#Heroku Settings
-# Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 

@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     'users',
     'rest_framework_swagger',
     'push_notifications',
+    'items',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -139,6 +140,11 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 SOCIAL_AUTH_USER_MODEL = 'users.MyUser'
 
@@ -150,6 +156,9 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '5fc388d8613577ec2b1ce2d74b19c424'
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
+
+
+#Heroku Settings
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 
@@ -164,6 +173,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),

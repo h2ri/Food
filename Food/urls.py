@@ -13,13 +13,23 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include, url, patterns
 from django.contrib import admin
-
+import settings
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^api/v1/', include('users.urls')),
+    url(r'^api/v1/',include('items.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
 
 ]
+if settings.DEBUG:
+    urlpatterns += patterns('',
+            url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+                'document_root': settings.MEDIA_ROOT,
+            }),
+            url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+                'document_root': settings.STATIC_ROOT,
+            }),
+)
